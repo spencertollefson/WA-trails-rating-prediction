@@ -16,7 +16,7 @@ Each "hike" has its own web page which displays all hike features in an aestheti
 
 ## Question/Need:
 
-Predict the rating (on a 0-5 scale) of any hike give its set of features.
+Predict the rating (on a 0-5 scale) of any hike given its set of features.
 
 This prediction model, while mostly for my fun and learning, could potentially help WTA and other trail authorities decide which features to invest in when maintaining or creating new trails.
 
@@ -70,6 +70,8 @@ Each row of data will be a record for a particular hike. There are currently 3,5
 ![jupyter notebook sample](https://raw.githubusercontent.com/spencertollefson/WA-trails-rating-prediction/master/src/common/images/example-wta-df.png "Sample of one row of data")
 
 ## Known Unknowns
-- Hikes with low number of total votes are more susceptible to delineating from a model
+- Hikes with low number of total votes are more susceptible to delineating from a model. A single or few voters can heavily influence rating.
+- Unknown how many hikes have substantial number of votes (arbitrarily say, greater than 10)
 - As with many rating systems, often people who take the time to rate have a highly positive or experience which can lead to fluctuations in the model.
 - Weather conditions, interaction with other hikers on the trail during the day of the hike, and other likely important factors are not captured by this model.
+- 1,822 of the 3,555 hikes have "incomplete information". Unknown how much information is missing until scraping. A large amount of missing information may make modeling difficult.
