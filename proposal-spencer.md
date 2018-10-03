@@ -26,7 +26,7 @@ Each hike can contain up to 30 features. Included are a number of continuous fea
 
 For some pages, there is extensive information on the authority responsible for maintaining the trail head or on the author of the website description. Because of this I have made multiple fields (author 1, author 2) to capture this information for pages in which it exists. It will fill as None for pages it does not exist.
 
-[img](/home/spencer/projects/Metis/sea18_ds6/the5projects/WA-trails-rating-prediction/example-wta-df.png)
+![jupyter notebook sample](https://raw.githubusercontent.com/spencertollefson/WA-trails-rating-prediction/master/src/common/images/example-wta-df.png "Sample of one row of data")
 
 Each hike page contains the following features.
 
