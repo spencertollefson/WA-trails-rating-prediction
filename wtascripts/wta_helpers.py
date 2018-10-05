@@ -4,8 +4,18 @@ Author: Spencer Tollefson
 Date: October 5, 2018
 '''
 
+def load_raw_df():
+    """Return df of raw WTA scraped dataset
+    """
+    import pickle
+    import pandas as pd
+    with open("data/raw_wta_df.pkl",'rb') as picklefile:
+        return pickle.load(picklefile)
+
+
 def clean_raw_df(df, minvotes=False, maxlength=False, maxgain=False, excludeoneway=False):
     """Clean WTA dataframe to be model ready.
+
     Keyword arguments:
     df -- the raw df scraped (see wta_scraping_notebook.py to scrape it)
     minvotes -- (int) min. number of votes toward rating a hike may have to be included
