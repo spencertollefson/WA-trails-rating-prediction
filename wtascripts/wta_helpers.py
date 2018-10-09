@@ -50,7 +50,7 @@ def clean_raw_df(df, minvotes=False, maxlength=False, maxgain=False, excludeonew
     df.rename(columns={'author1': 'org_author', "author2":"author"},inplace=True)
 
     # Drop a few columns and all NaNs
-    df = df.drop(columns=['trailhead2','org_author', 'author'])
+    df = df.drop(columns=['trailhead1', 'trailhead2','org_author', 'author', 'subregion','lat','long'])
     df.dropna(inplace=True)
 
     # drop hikes without any votes and ratings remaining
