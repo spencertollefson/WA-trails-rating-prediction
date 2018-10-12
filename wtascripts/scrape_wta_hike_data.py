@@ -5,7 +5,10 @@ Description: This script scrapes all hikes in the WTA.org website for 31
 possible characteristics and saves to a pandas DF.
 
 Instructions: Toggle variable READY to True and execute file. Look at
-writing df to disk at end of file if interested.
+writing df to disk at end of file if interested. Firefox webbrowser 
+must be set for use with Selenium, including installed gecko driver.
+
+Set location in last lines of script to choose where to save pickled DF.
 '''
 
 READY = False
@@ -13,8 +16,6 @@ READY = False
 from __future__ import print_function, division
 import pandas as pd
 import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -23,18 +24,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import os
-
-firefoxdriver = "/usr/local/bin/geckodriver" # path to the chromedriver executable
-os.environ["webdriver.firefox.driver"] = firefoxdriver
-
-get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'png' # ‘png’, ‘retina’, ‘jpeg’, ‘svg’, ‘pdf’")
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-mpl.rcParams['figure.dpi']= 300
-
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', 25)
-pd.set_option('display.precision', 3)
+import pickle
 
 headers = [
     'name',
@@ -251,7 +241,7 @@ masterdf = None
 def scrape_and_create_all_wta():
     '''
     Function scrapes every WTA hike page, concatenates info, and returns Pandas DF.
-    WARNING!!! This function takes approximately 1 hours and 9 minutes to run
+    WARNING!!! This function took approximately 1 hours and 9 minutes to run on local laptop.
     '''
     # tripreports url changes by number at end. iterates by 30 - begins at 0, ends at 3540
     df = None
@@ -273,11 +263,5 @@ def scrape_and_create_all_wta():
 while READY:
     df = scrape_and_create_all_wta()
 
-
-##### Pickle to save to drive
-
-#import pickle
-
-# with open('data/raw_wta_df.pkl', 'wb') as picklefile:
-#     pickle.dump(dfcopy, picklefile)
-
+with open('data/raw_wta_df.pkl', 'wb') as picklefile:
+    pickle.dump(df, picklefile)

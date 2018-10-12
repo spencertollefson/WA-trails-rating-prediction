@@ -2,6 +2,9 @@
 Helper scripts for WTA project
 Author: Spencer Tollefson
 Date: October 5, 2018
+
+Instructions: these functions are called in other .py
+files in this project to to load and clean DFs
 '''
 
 def load_raw_df():
