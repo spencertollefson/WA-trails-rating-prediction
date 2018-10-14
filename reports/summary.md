@@ -33,7 +33,7 @@ The number of vote and number of trip report features were highly correlated. In
 
 To give my model real value, I would have liked to remove any features which are only available post-hike creation. Ideally, this model could help "hike creators" plan where to create the trail for another hike. They would not have access to features such as the number of trip reports of a hike. However, this feature aided the model so much I chose to keep it for the sake of this project.
 
-I would have taken a closer look at the raw distribution of "rating" pre-modeling. It turns out the rating is heavily left-skewed with a higher percentage of hikes receiving scores in the 3-5 range and fewer in the 1-3 range. By applying a transoformation before modeling, it could help tease out and better understand the features that lead to sub-3 hike scores.
+I would have taken a closer look at the raw distribution of "rating" pre-modeling. It turns out the rating is heavily left-skewed with a higher percentage of hikes receiving scores in the 3-5 range and fewer in the 1-3 range. By applying a transformation before modeling, it could help tease out and better understand the features that lead to sub-3 hike scores.
 
 More charts during the modeling and EDA phase of residuals, Q-Q, and individual feature histograms would aid in understanding the underlying interaction between feature and target better.
 
@@ -43,11 +43,11 @@ Post-presentation I was introduced to Random Forest Regression and saw markable 
 
 Features | Type | Description | Use in Model | Typically Available for All Hikes?
 --- | --- | --- | --- | ---
-name | string | Name of hike | Y | Y
+rating | float | Rating on a scale of 0-5 (out to 2 decimals) of the hike by visitors to wta.org | Y
+name | string | Name of hike | N | Y
 region | string | Name of greater geographic region, limited to 11 areas | Y | Y
 subregion | string | Name of one of the multiple subregions within each region | N | Y
 total votes | int | Total number of votes cast to calculate rating | N | Y
-rating | float | Rating on a scale of 0-5 (out to 2 decimals) of the hike by visitors to wta.org | Y
 length (miles) | float | Number of miles (to one decimal) of the hike | Y | Y
 length is one-way or round trip | string | Defines if length is determined "one-way" or "round trip" | N/A | Y
 gain (feet) | int | Number of change in vertical feet from low point to high point of hike | Y | Y
